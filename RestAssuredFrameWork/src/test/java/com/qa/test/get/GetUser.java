@@ -2,79 +2,58 @@ package com.qa.test.get;
 
 import com.qa.Restclient.RestClient;
 import com.qa.pojo.User;
+import com.qa.test.BaseTest;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.hamcrest.Matcher;
+import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import static org.hamcrest.Matchers.*;
 
-public class GetUser {
+public class GetUser extends BaseTest {
 
-    RestClient restClient;
-    Response response;
-    ArrayList<Integer> ids;
-    Iterator<Integer> it;
+    @BeforeMethod
+    public void initRestClient() {
 
-    @Test
-    public void getUsers(){
-        restClient = new RestClient();
-
-        restClient.get("/public/v2/users/")
-                .then().log().all()
-                .assertThat()
-                .statusCode(200);
-
+        restClient = new RestClient(properties, baseURL);
     }
 
+//    @Test
+//    public void testMethods() {
+//
+//        restClient.get("/rest/self", "admin", "opentext")
+//                .then().log().all()
+//                .assertThat()
+//                .statusCode(200)
+//                .extract()
+//                .body().toString();
+//    }
+
     @Test
-    public void getUsers1() {
-        restClient = new RestClient();
+    public void getDlp() {
 
-        Response response = restClient.get("/public/v2/users/");
-        ArrayList<String> ids = response.body().jsonPath().get("name");
-        System.out.println(ids);
-        Iterator<String> it = ids.iterator();
+        //rest/admin/dlp/policies
+     Response response =   restClient.get("/rest/admin/dlp/policies","admin","opentext");
 
-        while (it.hasNext()) {
+     JsonPath jsonPath = response.getBody().jsonPath();
 
-            System.out.println(it.next());
+     List<String> value = jsonPath.getList("dlp_classification_level.title");
+
+        for (String val: value) {
+            System.out.println("value ==========" +val);
+
+            Assert.assertEquals(val, "himanshu" );
         }
 
-    }
-        @Test
-        public void getUsers2(){
-            restClient = new RestClient();
-
-          restClient.get("/public/v2/users/")
-                  .then()
-                  .assertThat()
-                  .body("id", hasItem(5181896));
-
-
-
-        }
-
-    @Test
-    public void getUsersWithQueryParam(){
-        restClient = new RestClient();
-
-        Map<String, String> map = new HashMap<>();
-        map.put("name","Aaditya Dubashi");
-        restClient.get("/public/v2/users/",null,map)
-                .then()
-                .assertThat()
-                .statusCode(200);
-
-
-
 
     }
-
 
 }

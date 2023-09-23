@@ -1,0 +1,1 @@
+{"uuid":"2ba7aafe-f73d-4f28-9de3-644ea47754bc","name":"Go Rest API","children":["7a6fb3c4-f985-4031-91d6-89e6fddcea96"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1695409596231,"stop":1695409596233}],"afters":[],"start":1695409596229,"stop":1695409597463}
