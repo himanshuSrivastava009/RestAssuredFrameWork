@@ -6,6 +6,7 @@ import com.qa.test.BaseTest;
 import com.qa.utilities.RandomEmailGen;
 import com.qa.utilities.RandomUserIDGen;
 import io.restassured.response.Response;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -21,6 +22,10 @@ public class CreateUser extends BaseTest {
     ArrayList<Integer> ids;
     Iterator<Integer> it;
 
+    @BeforeMethod
+    public void initRestClient(){
+        restClient = new RestClient(properties,baseURL);
+    }
     @Test
     public void createUser() {
 
@@ -47,8 +52,8 @@ public class CreateUser extends BaseTest {
 
         //2.Get Call
 
-        //RestClient rst = new RestClient();
-        restClient.get("/public/v2/users/"+userID)
+        RestClient rst = new RestClient(properties,baseURL);
+        rst.get("/public/v2/users/"+userID)
                 .then().log().all();
 
 

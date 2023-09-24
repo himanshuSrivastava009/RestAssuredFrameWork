@@ -11,10 +11,11 @@ import java.util.Properties;
 
 public class BaseTest {
 
-   protected ConfigurationManager configurationManager = null;
-   protected Properties properties ;
-    protected RestClient restClient ;
+   protected ConfigurationManager configurationManager;
+   protected Properties properties;
+    protected RestClient restClient;
     protected String baseURL;
+
     @Parameters({"baseURL"})
     @BeforeTest
     public void setup(String baseURL){

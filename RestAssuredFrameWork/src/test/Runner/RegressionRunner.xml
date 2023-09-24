@@ -1,37 +1,46 @@
 <suite name ="Api regression suite" thread-count="1" parallel="tests" verbose="4">
-    <test name = "Filr API">
-        <parameter name ="baseURL" value="https://blr8-110-206.apac.novell.com">
-            <classes>
-                <class name="com.qa.test.get.GetUser">
-                    <methods>
-                        <include name = "testMethods"/>
-                        <include name = "getDlp">
-                        </include>
-                    </methods>
-                </class>
-            </classes>
-        </parameter>
-    </test>
+<!--    <test name = "Filr API">-->
+<!--        <parameter name ="baseURL" value="https://blr8-110-206.apac.novell.com">-->
+<!--            <classes>-->
+<!--                <class name="com.qa.test.get.GetUser">-->
+<!--                    <methods>-->
+<!--                        <include name = "testMethods"/>-->
+<!--                        <include name = "getDlp">-->
+<!--                        </include>-->
+<!--                    </methods>-->
+<!--                </class>-->
+<!--            </classes>-->
+<!--        </parameter>-->
+<!--    </test>-->
 
     <test name = "Go Rest API">
         <parameter name ="baseURL" value="https://gorest.co.in">
             <classes>
-                <class name="com.qa.test.get.GetGoRestApi">
+                <class name="com.qa.test.get.GetGoRestApi"/>
 
-                </class>
+
             </classes>
         </parameter>
     </test>
-    <test name = "DLP API">
-        <parameter name ="baseURL" value="https://blr8-110-205.apac.novell.com">
+
+    <test name = "Go Rest API Create User">
+        <parameter name ="baseURL" value="https://gorest.co.in">
             <classes>
-                <class name="com.qa.test.Post.CreateDLPPolicies">
-                    <methods>
-                        <include name = "uploadFile">
-                        </include>
-                    </methods>
-                </class>
+                <class name="com.qa.test.Post.CreateUser"/>
+
             </classes>
         </parameter>
     </test>
+<!--    <test name = "DLP API">-->
+<!--        <parameter name ="baseURL" value="https://blr8-110-205.apac.novell.com">-->
+<!--            <classes>-->
+<!--                <class name="com.qa.test.Post.CreateUser">-->
+<!--                    <methods>-->
+<!--                        <include name = "createUser">-->
+<!--                        </include>-->
+<!--                    </methods>-->
+<!--                </class>-->
+<!--            </classes>-->
+<!--        </parameter>-->
+<!--    </test>-->
 </suite>
