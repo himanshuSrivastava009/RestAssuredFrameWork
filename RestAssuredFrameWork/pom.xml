@@ -100,7 +100,7 @@
                     <reuseForks>true</reuseForks>
                     <suiteXmlFiles>
 <!--                        <argLine>-Xmx1024m</argLine>-->
-                        <suiteXmlFile>/Users/swati/Documents/HimashuRestAssured/RestAssuredFrameWork/RestAssuredFrameWork/src/test/Runner/RegressionRunner.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/Runner/RegressionRunner.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
